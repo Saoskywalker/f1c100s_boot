@@ -64,9 +64,9 @@ void sys_spi_flash_init(void)
 	/* Enable spi0 and do a soft reset */
 	addr = 0x01c05000;
 	val = read32(addr + SPI_GCR);
-	val |= (1 << 31) | (1 << 7) | (1 << 1) | (1 << 0);
+	val |= ((u32_t)1 << 31) | (1 << 7) | (1 << 1) | (1 << 0);
 	write32(addr + SPI_GCR, val);
-	while (read32(addr + SPI_GCR) & (1 << 31))
+	while (read32(addr + SPI_GCR) & ((u32_t)1 << 31))
 		;
 
 	val = read32(addr + SPI_TCR);
@@ -75,7 +75,7 @@ void sys_spi_flash_init(void)
 	write32(addr + SPI_TCR, val);
 
 	val = read32(addr + SPI_FCR);
-	val |= (1 << 31) | (1 << 15);
+	val |= ((u32_t)1 << 31) | (1 << 15);
 	write32(addr + SPI_FCR, val);
 }
 
@@ -140,7 +140,7 @@ static int sys_spi_transfer(void *txbuf, void *rxbuf, int len)
 		n = (count <= 64) ? count : 64;
 		write32(addr + SPI_MBC, n);
 		sys_spi_write_txbuf(tx, n);
-		write32(addr + SPI_TCR, read32(addr + SPI_TCR) | (1 << 31));
+		write32(addr + SPI_TCR, read32(addr + SPI_TCR) | ((u32_t)1 << 31));
 
 		while ((read32(addr + SPI_FSR) & 0xff) < n)
 			;

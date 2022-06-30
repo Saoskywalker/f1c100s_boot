@@ -432,7 +432,7 @@ static int dram_init(struct dram_para_t *para)
 	(para->sdr_ddr == DRAM_TYPE_DDR) ? (val |= (0x1 << 16)) : (val &= ~(0x1 << 16));
 	write32(0x01c20800 + 0x2c4, val);
 
-	val = (SDR_T_CAS << 0) | (SDR_T_RAS << 3) | (SDR_T_RCD << 7) | (SDR_T_RP << 10) | (SDR_T_WR << 13) | (SDR_T_RFC << 15) | (SDR_T_XSR << 19) | (SDR_T_RC << 28);
+	val = (SDR_T_CAS << 0) | (SDR_T_RAS << 3) | (SDR_T_RCD << 7) | (SDR_T_RP << 10) | (SDR_T_WR << 13) | (SDR_T_RFC << 15) | (SDR_T_XSR << 19) | ((u32_t)SDR_T_RC << 28);
 	write32(F1C100S_DRAM_BASE + DRAM_STMG0R, val);
 	val = (SDR_T_INIT << 0) | (SDR_T_INIT_REF << 16) | (SDR_T_WTR << 20) | (SDR_T_RRD << 22) | (SDR_T_XP << 25);
 	write32(F1C100S_DRAM_BASE + DRAM_STMG1R, val);
@@ -463,7 +463,7 @@ static int dram_init(struct dram_para_t *para)
 void sys_dram_init(void)
 {
 	struct dram_para_t para;
-	u32_t *dsz = (void *)0x0000005c;
+	// u32_t *dsz = (void *)0x0000005c;
 
 	para.base = 0x80000000;
 	para.size = 32;
