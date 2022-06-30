@@ -3,7 +3,7 @@
 #include "reg_ccu.h"
 #include "sys_dram.h"
 
-#define PLL_DDR_CLK (156000000)
+#define PLL_DDR_CLK (200000000) //(156000000) //DRAM frequency
 #define SDR_T_CAS (0x2)
 #define SDR_T_RAS (0x8)
 #define SDR_T_RCD (0x3)
