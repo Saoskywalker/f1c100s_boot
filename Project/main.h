@@ -3,7 +3,8 @@
 
 //配置LCD
 //#define LCD_TYPE_RGB43_480_272
-#define LCD_TYPE_Vga_1024_768
+// #define LCD_TYPE_Vga_1024_768
+#define LCD_TYPE_RGB43_800_480
 
 //-------------------------------------------
 #ifdef LCD_TYPE_RGB43_480_272
@@ -18,6 +19,12 @@
 #endif
 //-------------------------------------------
 //
+////-------------------------------------------
+#ifdef LCD_TYPE_RGB43_800_480
+#define LCD_W (unsigned int)800
+#define LCD_H (unsigned int)480
+#endif
+////-------------------------------------------
 
 #define BOOTBMP "eGON.BMP"
 #define BOOTEXE "eGON.EXE"
