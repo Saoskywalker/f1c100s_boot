@@ -1,0 +1,6 @@
+/build/
+/.vscode/
+*.code-workspace
+/Project/obj/
+/Project/lst/
+*.uvgui.*
